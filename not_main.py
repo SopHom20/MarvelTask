@@ -1,13 +1,16 @@
 import requests
 from datetime import datetime
 import hashlib
+import os
 
 characters = []
 
 def getParams():
     ts = datetime.timestamp(datetime.now())
-    private_key = 'dd9f636bb9927e657228de86f6fc0047cac8dae3'
-    public_key = '1c3a6525dc80c14c7fadb474d1bd11c5'
+    private_key = os.getenv('PRIVATE_KEY')
+    public_key = os.getenv('PUBLIC_KEY')
+    print("here")
+    print(os.environ)
     hashkey = hashlib.md5()
     hashkey.update(f'{ts}{private_key}{public_key}'.encode())
     hashed = hashkey.hexdigest()
@@ -24,6 +27,7 @@ def getCharacter(character):
 
 def getDetails(request):
     characters.clear()
+    print(request)
     if request['data']['count'] > 0:
         for char in request['data']['results']:
             character = {'name': char['name']}
