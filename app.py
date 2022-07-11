@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from main import getCharacter, getDetails, getResults
+from not_main import getCharacter, getDetails, getResults
 
 app = Flask(__name__)
 
