@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Marvel</h1>
+    <p class="lead">Characters</p>
+</div>
+
+<div class="col pt-3 ">
+    <ul class="list-group">
+        {% for char in characters %}
+        <a class="list-group-item">
+            <div class="d-flex flex-row justify-content-between">
+                <h5 class="mb-1"> {{ char.name }} </h5>
+                <p class="mb-1"> {{ char.description }} </p>
+            </div>
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+<div class="col pt-3 ">
+    <form action="/searchCharacter" method="post" class="search-character">
+        <div class="input-group mb-3 w-100">
+
+            <input type="text" class="form-control" placeholder="Search for a character" aria-label="Search Character"
+                   aria-describedby="button-addon" name="title" required>
+            <div class="input-group-append">
+                <input class="btn btn-outline-secondary" type="submit" id="button-addon"> </input>
+            </div>
+
+
+        </div>
+    </form>
+
+</div>
+{% endblock %}
